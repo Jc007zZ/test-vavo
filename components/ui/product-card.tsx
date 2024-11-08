@@ -1,22 +1,21 @@
 import { Card, CardHeader, CardBody } from "@nextui-org/card";
 import Image from 'next/image'
 
-interface ProductCard {
-  title: string;
-  image: string;
-  value: number;
-  teste: number,
-  stock: number,
-  discountPercentage: number
+interface ProductsCards {
+    image: string,
+    title: string,
+    value: number,
+    discountPercentage: number,
+    stock: number
 }
 
-export function ProductCard({title, image, value, teste, stock, discountPercentage }:ProductCard){
-   
-
-
+export function ProductCard({ image, title, value , discountPercentage, stock, children }: any){
 
     return (
     <Card className="py-4 w-[20rem] h-[25rem] bg-black">
+          <div className="flex justify-end px-4">
+            {children}
+          </div>
           <CardBody className="flex flex-col items-center gap-4 overflow-visible py-2">
             <div className="bg-white rounded-xl">
               <Image
@@ -36,7 +35,6 @@ export function ProductCard({title, image, value, teste, stock, discountPercenta
                   <p className="bg-green-500 px-2 rounded-2xl ml-2"> -{Math.ceil(discountPercentage)}%</p>
               </div>
               <h1 className="text-lg font-semibold">Produtos disponivel: <span className="text-zinc-300 font-medium">{stock}</span></h1>
-              {/* <h1>{teste}</h1> */}
             </div>
           </CardBody>
       </Card>
