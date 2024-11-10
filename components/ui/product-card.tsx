@@ -3,6 +3,10 @@ import { Button } from "@nextui-org/button";
 import Image from "next/image";
 import { ReactNode } from "react";
 
+import { useContext } from "react";
+
+import GeneralContext from "@/context/GeneralContext";
+
 interface ProductsCards {
   image: string;
   title: string;
@@ -35,6 +39,8 @@ export function ProductCard({
     validSrc = image;
   }
 
+  const { teste, setTeste }  = useContext(GeneralContext)
+ 
   return (
     <Card className="py-4 px-4 w-[20rem] h-[30rem] bg-black">
       <div className="flex justify-end px-4">{children}</div>
@@ -70,7 +76,7 @@ export function ProductCard({
             </h1>
           </div>
           <div className="flex w-full justify-center">
-            <Button className="w-10/12 h-[2.5rem]">Comprar</Button>
+            <Button onClick={() => setTeste('cole')} className="w-10/12 h-[2.5rem]">Comprar</Button>
           </div>
         </div>
       </CardBody>
